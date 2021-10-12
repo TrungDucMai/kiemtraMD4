@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title>City List</title>
+</head>
+<body>
+<script>
+    $(document).ready(function (){
+        $.ajax({
+            type: "GET",
+            url: 'http://localhost:8888/rest/cities',
+            success: function (data) {
+                for (let i = 0; i < data.length; i++) {
+                    let a = document.getElementById("cityList")
+                    a.innerHTML +=
+                        `<tr>
+                        <td>${data[i].cityName}}</td>
+                        <td>${data[i].countryName}}</td>
+                        <td>${data[i].area}}</td>
+                        <td>${data[i].population}}</td>
+                        <td>${data[i].gdp}}</td>
+                        <td>${data[i].description}}</td>
+                        <td>${data[i].cityName}}</td>
+                        <td></td>
+                        </tr>`
+                }
+            }
+        })
+
+    })
+</script>
+<h1>City List</h1>
+<a href=""></a>
+<table border="1">
+    <tr>
+        <td>City</td>
+        <td>Country</td>
+        <td>Area</td>
+        <td>Population</td>
+        <td>Description</td>
+        <td>Delete</td>
+        <td>Edit</td>
+    </tr>
+    <div id="cityList"></div>
+</table>
+</body>
+</html>
